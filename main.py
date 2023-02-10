@@ -4,12 +4,12 @@ from os import system
 def jugar(user, pc, w, l):
     
     if (user == "piedra" and pc == "tijera") or (user == "papel" and pc == "piedra") or (user == "tijera" and pc == "papel"):
-        print("Ganaste!")
+        print("🙋 Ganaste!")
         w += 1 
     elif user == pc:
-        print("Empate")        
+        print("🤝 Empate")        
     else:
-        print("Perdiste")
+        print("🤖 Te gané!")
         l += 1
     return w,l
    
@@ -20,7 +20,7 @@ def run():
     while(victorias < 2 and derrotas < 2):        
         
         pc = random.randint(1,3)
-        jugador = input("Piedra, papel o tijera: ")
+        jugador = input("Piedra 🪨, papel 📄 o tijera ✂️ : ")
         jugador = jugador.lower() #Convierte la cadena de caracteres en minúsulas
         if not jugador in opciones:
             print("Elige una opción válida")
@@ -34,7 +34,7 @@ def run():
         victorias,derrotas = jugar(jugador,pc,victorias,derrotas)
         print(f"Tú: {victorias}"," vs ",f"PC: {derrotas}")
                    
-    print("El juego ha terminado")
+    print("El juego ha terminado!")
 
 if __name__ == '__main__':
     run()
