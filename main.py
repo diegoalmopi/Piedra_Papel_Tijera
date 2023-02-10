@@ -12,29 +12,23 @@ def jugar(user, pc, w, l):
         print("Perdiste")
         l += 1
     return w,l
-def eleccion(opcion):
-    
-    match opcion:
-        case "piedra" | "1":
-            return "piedra"            
-        case "papel" | "2":
-            return "papel"            
-        case "tijera" | "3":
-            return "tijera"            
-        case _:
-            print("Elije una opción válida")
    
 def run():    
     victorias = 0
     derrotas = 0
+    opciones = ("piedra","papel","tijera")
     while(victorias < 2 and derrotas < 2):        
         
         pc = random.randint(1,3)
-        jugador = input("Piedra (1), papel (2) o tijera (3): ")
+        jugador = input("Piedra, papel o tijera: ")
         jugador = jugador.lower() #Convierte la cadena de caracteres en minúsulas
+        if not jugador in opciones:
+            print("Elige una opción válida")
+            continue
+        
         system("clear")
-        pc = eleccion(str(pc))
-        jugador = eleccion(jugador)
+        pc = random.choice(opciones)
+        
         print(f"Elegiste ------------> {jugador.upper()}")
         print(f"Computadora eligió --> {pc.upper()}")
         victorias,derrotas = jugar(jugador,pc,victorias,derrotas)
